@@ -51,8 +51,7 @@ export const Header = () => {
   return (
     <div className='absolute z-50 w-full px-7  bg-gradient-to-b from-black flex justify-between' >
       <div>
-        <img src='https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png
-' alt="logo" className='w-50'/>
+        <img src="/seekflix_logo.png" alt="SeekFlix-logo" className='w-50 cursor-pointer mt-3' />
       </div>
 
       {user && (<div className='w-70 h-17 flex gap-3 p-2'>

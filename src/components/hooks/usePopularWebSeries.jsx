@@ -11,10 +11,12 @@ const usePopularWebSeries = () => {
     fetch('https://api.themoviedb.org/3/tv/popular?region=IN&page=1', API_OPTIONS)
       .then(res => res.json())
       .then((res)=>{
-        console.log(res);
+        // console.log(res);
         dispatch(addPopularWebSeries(res.results))
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        // console.error(err)
+      });
   }
 
   useEffect(()=>{

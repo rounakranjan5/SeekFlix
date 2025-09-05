@@ -13,7 +13,7 @@ import AiSearch from './AiSearch'
 const Browse = () => {
 
   const showAisearch=useSelector(state=>state.seekAi.showAisearch)
-  console.log(showAisearch);
+  // console.log(showAisearch);
 
   useNowPlayingMovies()
   usePopularMovies()

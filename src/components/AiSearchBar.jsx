@@ -32,14 +32,14 @@ const AiSearchBar = () => {
         model: 'gemini-2.0-flash-001',
         contents: geminiQuery,
       });
-      console.log(geminiResults.text);
+      // console.log(geminiResults.text);
 
       let geminiResultsArr = geminiResults.text.split(",").map(movie => movie.trim());
 
       let movieNames = geminiResultsArr.map((movie) => searchInTMDB(movie));
       let finalMovieNames = await Promise.all(movieNames);
 
-      console.log("movie names TMDB Fetch : ", finalMovieNames);
+      // console.log("movie names TMDB Fetch : ", finalMovieNames);
 
       // Here's the fix - you need to dispatch the action, not just call the action creator
       dispatch(addGeminiRecommendations({
@@ -47,9 +47,9 @@ const AiSearchBar = () => {
         TMDBMovieResults: finalMovieNames
       }));
 
-      console.log("Dispatched to Redux store!");
+      // console.log("Dispatched to Redux store!");
     } catch (error) {
-      console.error("Error in search process:", error);
+      // console.error("Error in search process:", error);
     }
   }
 
