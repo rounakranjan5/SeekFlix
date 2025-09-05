@@ -1,9 +1,71 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import {signOut } from "firebase/auth";
+import {auth} from './utils/firebase'
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { addUser,removeUser } from './utils/userSlice';
+import { toggleAiSearch } from './utils/seekAiSlice';
+
 
 export const Header = () => {
+  const user=useSelector(store=> store.user)
+  const showAisearch=useSelector(store=> store.seekAi.showAisearch)
+  const navigate=useNavigate()
+  const dispatch=useDispatch()
+
+  function handleSeekAIclick(){
+    // console.log("handle seek ai click");
+    dispatch(toggleAiSearch())
+  }
+
+  
+  function handleSignOut(){
+    // console.log("handle sign out");
+    signOut(auth).then(() => {
+      
+    }).catch((error) => {
+      navigate('/error-page')
+    });
+  }
+
+    useEffect(()=>{
+        const unsubscribe=  onAuthStateChanged(auth, (user) => {
+            if (user) {
+              // User is signed in
+              const {uid,email,displayName,photoURL} = user;
+              dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}))
+              navigate('/browse')
+            } else {
+              // User is signed out
+              dispatch(removeUser())
+              navigate('/')
+            }
+        });
+        
+        // unsubscribing when component unmounts
+        return ()=> unsubscribe()
+      },[])
+
   return (
-    <div className='absolute z-5 w-full px-7  bg-gradient-to-b from-black' >
-        <img src='https://help.nflxext.com/helpcenter/OneTrust/oneTrust_production_2025-08-26/consent/87b6a5c0-0104-4e96-a291-092c11350111/0198e689-25fa-7d64-bb49-0f7e75f898d2/logos/dd6b162f-1a32-456a-9cfe-897231c7763c/4345ea78-053c-46d2-b11e-09adaef973dc/Netflix_Logo_PMS.png' alt="logo" className='w-50'/>
+    <div className='absolute z-50 w-full px-7  bg-gradient-to-b from-black flex justify-between' >
+      <div>
+        <img src='https://image.tmdb.org/t/p/w500/wwemzKWzjKYJFfCeiB57q3r4Bcm.png
+' alt="logo" className='w-50'/>
+      </div>
+
+      {user && (<div className='w-70 h-17 flex gap-3 p-2'>
+        <button onClick={handleSeekAIclick} className='bg-purple-900 px-6 text-white rounded-lg cursor-pointer text-nowrap relative z-50 flex items-center justify-center'>
+          {
+            showAisearch ? <>Home&nbsp;<i class="fa-regular fa-house"></i></> : <>SeekAI&nbsp;<i className="fa-brands fa-openai"></i></>
+          }
+          
+        </button>
+        <img src={user?.photoURL} alt="User-Avatar" className='rounded-lg cursor-pointer' />
+        <button className='bg-white font-bold rounded-xl text-wrap px-6 cursor-pointer ' onClick={handleSignOut}>Sign Out</button>
+      </div>)}
+
     </div>
   )
 }
