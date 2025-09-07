@@ -1,12 +1,58 @@
-# React + Vite
+# SeekFlix 🍿
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A Netflix-inspired streaming platform built with React that brings a modern, responsive UI with advanced features like AI-powered movie recommendations.
 
-Currently, two official plugins are available:
+## 🚀 Live Demo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Check out the live application: [SeekFlix](https://seekflix-7b1c3.web.app/)
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Authentication
+- **User Sign-up & Sign-in** - Secure authentication system using Firebase
+- **Form Validation** - Real-time validation of user inputs with error handling
+
+
+### UI/UX
+- **Responsive Design** - Seamless experience across mobile, tablet, and desktop devices
+- **Netflix-inspired Interface** - Modern UI with sleek animation and styling
+
+### Movie Browsing
+- **Main Banner** - Featured movie with trailer, title, and description
+- **Multiple Categories** - Browse movies by categories:
+  - Now Playing
+  - Popular Movies
+  - Top Rated
+  - Upcoming Movies
+  - Popular Web Series
+
+### AI Integration
+- **SeekAI** - AI-powered movie recommendation system
+- **Custom Movie Suggestions** - Get personalized movie recommendations based on your preferences
+
+### Technical Features
+- **State Management** - Redux for global state management
+- **API Integration** - TMDB API for movie data
+- **Firebase Backend** - Authentication and hosting
+- **React Router** - Seamless navigation between pages
+
+## 🛠️ Technologies Used
+
+- **React** - Frontend library
+- **Redux Toolkit** - State management
+- **Firebase** - Authentication & hosting
+- **Tailwind CSS** - Styling
+- **React Router** - Navigation
+- **TMDB API** - Movie data
+
+## 🌐 Connect
+
+Built with ❤️ by [Rounak Ranjan](https://github.com/rounakranjan5)
+
+## 🔮 What's Next
+
+More features and enhancements are on the way! As there is always scope for improvement, the project will continue to evolve with new functionalities and optimizations.
+
+---
+
+**Note**: This project is created for learning purposes and is not affiliated with Netflix.

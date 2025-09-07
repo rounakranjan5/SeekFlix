@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import {signOut } from "firebase/auth";
 import {auth} from './utils/firebase'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { onAuthStateChanged } from "firebase/auth";
 import { useDispatch } from 'react-redux';
@@ -13,7 +13,11 @@ export const Header = () => {
   const user=useSelector(store=> store.user)
   const showAisearch=useSelector(store=> store.seekAi.showAisearch)
   const navigate=useNavigate()
+  const location = useLocation()
   const dispatch=useDispatch()
+  
+  // Check if current path is Login page or if AiSearch is toggled on
+  const isAiSearchOrLogin = location.pathname === '/' || showAisearch
 
   function handleSeekAIclick(){
     // console.log("handle seek ai click");
@@ -49,21 +53,27 @@ export const Header = () => {
       },[])
 
   return (
-    <div className='absolute z-50 w-full px-7  bg-gradient-to-b from-black flex justify-between' >
+    <div className={`absolute z-50 w-full px-7 py-3 ${!isAiSearchOrLogin ? 'bg-black' : ''} md:py-0 
+    md:bg-transparent bg-gradient-to-b from-black md:flex md:justify-between`}>
+
       <div>
-        <img src="/seekflix_logo.png" alt="SeekFlix-logo" className='w-50 cursor-pointer mt-3' />
+        <img src="/seekflix_logo.png" alt="SeekFlix-logo" className='w-50 cursor-pointer mt-3 mx-auto md:mx-0' />
       </div>
+
+      <div className='mt-7 md:mt-1 flex justify-center'>
 
       {user && (<div className='w-70 h-17 flex gap-3 p-2'>
         <button onClick={handleSeekAIclick} className='bg-purple-900 px-6 text-white rounded-lg cursor-pointer text-nowrap relative z-50 flex items-center justify-center'>
           {
-            showAisearch ? <>Home&nbsp;<i class="fa-regular fa-house"></i></> : <>SeekAI&nbsp;<i className="fa-brands fa-openai"></i></>
+            showAisearch ? <>Home&nbsp;<i className="fa-regular fa-house"></i></> : <>SeekAI&nbsp;<i className="fa-brands fa-openai"></i></>
           }
           
         </button>
         <img src={user?.photoURL} alt="User-Avatar" className='rounded-lg cursor-pointer' />
         <button className='bg-white font-bold rounded-xl text-wrap px-6 cursor-pointer ' onClick={handleSignOut}>Sign Out</button>
       </div>)}
+
+      </div>
 
     </div>
   )

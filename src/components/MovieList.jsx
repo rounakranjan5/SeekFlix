@@ -8,7 +8,7 @@ const MovieList = ({title,movies}) => {
   let showAisearch=useSelector(state=>state.seekAi.showAisearch)
   return (
     <div className='px-6 pt-4 pb-2 bg-gradient-to-t from-black via-black/90 to-transparent relative z-30'>
-      <h1 className='text-2xl py-1 text-white font-bold'>{title}{showAisearch ? " and Related Movies" : null}</h1>
+      <h1 className='text-xl md:text-2xl py-1 text-white font-bold'>{title}{showAisearch ? " and Related Movies" : null}</h1>
       <div className='flex overflow-x-scroll no-scrollbar'>
         <div className='flex'>
         {

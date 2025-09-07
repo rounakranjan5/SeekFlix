@@ -54,25 +54,25 @@ const AiSearchBar = () => {
   }
 
   return (
-    <div className='pt-[7%] flex justify-center'>
+    <div className='pt-[30%] md:pt-[7%] flex justify-center'>
         <form onSubmit={(e) => {
           e.preventDefault();
           handleSearch();
-        }} className='p-2 m-6 bg-black bg-opacity-70 w-1/2 grid grid-cols-12 text-white rounded-lg shadow-lg border border-gray-800'>
+        }} className='p-2 m-6 bg-black bg-opacity-70 w-full md:w-1/2 grid grid-cols-12 text-white rounded-lg shadow-lg border border-gray-800 mt-15'>
             <input 
               ref={searhInp}
               type='text' 
               placeholder='What do you want to watch today?' 
-              className='p-4 m-2 col-span-9 bg-gray-900 rounded-l-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent text-white placeholder-gray-400' 
+              className='p-4 m-2 col-span-10 bg-gray-900 rounded-l-lg border border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent text-white placeholder-gray-400' 
             />
             <button 
               onClick={handleSearch}
               type='submit' 
-              className='rounded-r-lg bg-purple-900 hover:bg-purple-800 text-white font-medium py-2 px-4 m-2 cursor-pointer col-span-3 flex items-center justify-center'
+              title='search'
+              className='rounded-r-lg bg-purple-900 hover:bg-purple-800 text-white font-medium py-2 px-4 m-2 cursor-pointer col-span-2 flex items-center justify-center sm:flex-wrap'
             >
              <i className="fa-solid fa-magnifying-glass"></i>
-             &nbsp;
-              Search
+             <span className='hidden md:block'>&nbsp;Search</span>
             </button>
         </form>
        

@@ -92,7 +92,7 @@ const Login = () => {
         />
 
         <div className='border border-black bg-black text-white absolute top-1/5
-        left-1/3 p-4 gap-4 rounded-lg w-1/3 opacity-85 text-wrap m-5'>
+        md:left-1/3 p-4 gap-4 md:rounded-lg w-full md:w-1/3 opacity-85 text-wrap md:m-5'>
 
           <h1 className='text-2xl font-bold p-4'>{isSignIn ? "Sign In" : "Sign Up"}</h1>
 
